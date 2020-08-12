@@ -1,5 +1,6 @@
 package jojoidu.boot.springboot.domain.posts;
 
+import jojoidu.boot.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity // テーブルとリンクされるクラスを示す
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id // PKフィールドを示す
     @GeneratedValue(strategy = GenerationType.IDENTITY)
