@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @Getter
-@MappedSuperclass
+@MappedSuperclass // 本クラスのフォール度をカラムとして扱う。（継承したとき）
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseTimeEntity {
 

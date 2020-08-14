@@ -9,6 +9,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * ServiceではトランザクションとJPA実行順番だけを扱う。
+ * ビジネスロジックはドメインで扱う。
+ */
 @RequiredArgsConstructor
 @Service
 public class PostsService {
