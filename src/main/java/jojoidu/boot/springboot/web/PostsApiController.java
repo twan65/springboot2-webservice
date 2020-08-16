@@ -36,6 +36,7 @@ public class PostsApiController {
         return postsService.update(id, requestDto);
     }
 
+
     /**
      * 記事を取得する。
      *
