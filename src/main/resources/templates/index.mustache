@@ -12,6 +12,31 @@
                 <a href="/posts/save" role="button" class="btn btn-primary">投稿</a>
             </div>
         </div>
+
+        <br>
+
+        <table class="table-horizontal table-bordered">
+            <thead class="thead-strong">
+            <tr>
+                <th>No</th>
+                <th>タイトル</th>
+                <th>作成者</th>
+                <th>内容</th>
+                <th>更新日</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            {{#posts}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{title}}</td>
+                    <td>{{author}}</td>
+                    <td>{{content}}</td>
+                    <td>{{modifiedDate}}</td>
+                </tr>
+            {{/posts}}
+            </tbody>
+        </table>
     </div>
 
     {{>layout/footer}}

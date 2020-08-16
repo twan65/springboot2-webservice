@@ -2,12 +2,16 @@ package jojoidu.boot.springboot.web.service.posts;
 
 import jojoidu.boot.springboot.domain.posts.Posts;
 import jojoidu.boot.springboot.domain.posts.PostsRepository;
+import jojoidu.boot.springboot.web.dto.PostsListResponseDto;
 import jojoidu.boot.springboot.web.dto.PostsResponseDto;
 import jojoidu.boot.springboot.web.dto.PostsSaveRequestDto;
 import jojoidu.boot.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * ServiceではトランザクションとJPA実行順番だけを扱う。
@@ -62,4 +66,17 @@ public class PostsService {
 
         return new PostsResponseDto(posts);
     }
+
+    /**
+     * 全記事を取得する。
+     *
+     * @return 全記事
+     */
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> finAllDesc() {
+        return postsRepository.findAllDesc().stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
 }
