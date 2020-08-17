@@ -36,6 +36,17 @@ public class PostsApiController {
         return postsService.update(id, requestDto);
     }
 
+    /**
+     * 記事を削除する。
+     *
+     * @param id 記事ID
+     * @return 削除されたID
+     */
+    @DeleteMapping("/api/v1/posts/{id}")
+    public Long delete(@PathVariable Long id) {
+        postsService.delete(id);
+        return id;
+    }
 
     /**
      * 記事を取得する。

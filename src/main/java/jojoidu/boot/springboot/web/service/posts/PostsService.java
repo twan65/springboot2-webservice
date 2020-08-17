@@ -55,6 +55,21 @@ public class PostsService {
     }
 
     /**
+     * 該当記事を削除する。（1件）
+     *
+     * @param id
+     */
+    @Transactional
+    public void delete(Long id) {
+        // 該当の記事を取得する。該当記事がない場合は「IllegalArgumentException」を発生させる。
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("該当の記事がありません。Id=" + id));
+
+        postsRepository.delete(posts);
+    }
+
+
+    /**
      * 記事を1件取得する。
      *
      * @param id 記事ID
