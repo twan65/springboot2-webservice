@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * ユーザー情報担当
+ */
 @Getter
 @NoArgsConstructor
 @Entity

@@ -6,7 +6,7 @@ import lombok.Getter;
 import java.io.Serializable;
 
 /**
- * 認証されたユーザーのみ保存するため、name,email,pictureのみ宣言
+ * 認証されたユーザー情報を保存するクラス
  */
 @Getter
 public class SessionUser implements Serializable {

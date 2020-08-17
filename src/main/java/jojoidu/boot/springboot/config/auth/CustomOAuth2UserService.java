@@ -17,6 +17,10 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
 
+/**
+ * Googleログイン後、ソーシャルサービスから取得したユーザー情報（name,email,pictureなど）をもとに
+ * 入会及び情報修正、セッション保存などの機能を定義する。
+ */
 @RequiredArgsConstructor
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
@@ -26,6 +30,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
 
@@ -37,12 +42,13 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         String userNameAttributeName = userRequest.getClientRegistration()
                 .getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
 
-        // OAuth2UserServiceから取得したOauth2Userのattuributeを保存するクラス
+        // OAuth2UserServiceから取得したOauth2Userのattributeを保存するクラス
         OAuthAttributes attributes =
                 OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
         User user = saveOrUpdate(attributes);
 
+        // セッションにユーザー情報を保存
         httpSession.setAttribute("user", new SessionUser(user));
 
         return new DefaultOAuth2User(
@@ -51,6 +57,12 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 , attributes.getNameAttributeKey());
     }
 
+    /**
+     * Emailでユーザーを検索し、存在ユーザーの場合は更新、存在しないユーザーは登録を行う。
+     *
+     * @param attributes ソーシャルサービスから取得したユーザー情報
+     * @return ユーザーEntity
+     */
     private User saveOrUpdate(OAuthAttributes attributes) {
         User user = userRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))

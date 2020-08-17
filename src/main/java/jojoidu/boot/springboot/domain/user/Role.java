@@ -3,6 +3,9 @@ package jojoidu.boot.springboot.domain.user;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * ユーザー権限管理Enum
+ */
 @Getter
 @RequiredArgsConstructor
 public enum Role {
