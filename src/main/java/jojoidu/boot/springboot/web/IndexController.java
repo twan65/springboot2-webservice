@@ -51,7 +51,7 @@ public class IndexController {
      * 記事更新画面を表示
      *
      * @param id 記事ID
-     * @param model モデル
+     * @param model モデルz
      * @return 記事更新画面のパス
      */
     @GetMapping("/posts/update/{id}")

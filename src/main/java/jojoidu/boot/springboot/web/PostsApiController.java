@@ -20,9 +20,8 @@ public class PostsApiController {
      * @return 記事ID
      */
     @PostMapping("/api/v1/posts")
-    public Long save(@RequestBody PostsSaveRequestDto requestDto) throws Exception {
-        throw new Exception();
-//        return postsService.save(requestDto);
+    public Long save(@RequestBody PostsSaveRequestDto requestDto) {
+        return postsService.save(requestDto);
     }
 
     /**

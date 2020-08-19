@@ -26,7 +26,7 @@ var main = {
             url: '/api/v1/posts',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
-        }).done(function() {
+        }).done(function(data) {
             alert('記事が登録されました。');
             window.location.href = '/';
         }).fail(function(error) {
