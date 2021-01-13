@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="jojoidu.boot.springboot.web.dto.HelloResponseDtoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-13T09:31:59" hostname="anteunnoMac-mini.local" time="0.033">
+  <properties/>
+  <testcase name="lombokTest" classname="jojoidu.boot.springboot.web.dto.HelloResponseDtoTest" time="0.033"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
